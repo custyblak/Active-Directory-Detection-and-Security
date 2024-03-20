@@ -41,4 +41,30 @@ Download and extract the image file to the location of your choice on your PC. O
 <img src="https://imgur.com/lDo0VkF.png" height="100%" width="80%" alt="Download the VMWare Image"/> 
 <br />
 
-Once the above has been done, select on the image and click on **Play Virtual Machine**. 
+Once the above has been done, select the image and click on **Edit Virtual Machine Settings**. You will see alot of Network Adapters but from our diagram, we have only 4 connections to the FortiGate firewall and 1 connection to the internet. In summary, we need 5 network adapters 1 as either a NAT or Bridge and the others as LANs.
+
+<p align="center">
+<img src="https://imgur.com/DI8Hpsf.png" height="100%" width="80%" alt="Download the VMWare Image"/> 
+<br />
+
+Also from the diagram, we have different subnets. To add those subnet names to the firewall, follow the steps below.
+1. Click on the second interface and check the **LAN Segment** button.
+2. Click on the **LAN Segments** button
+3. Add the name of the LAN segment that you want to assign to each of the network adapters.
+   
+<p align="center">
+<img src="https://imgur.com/VtjJqaI.png" height="100%" width="80%" alt="LAN Segment config"/> 
+<br />
+  
+After this has been done, go back to the various network adapters and select each of those LAN segments for each. Save your configuration and now start the virtual machine.
+Log into the VM after bootup with the username as **admin** and **no password**. You will be prompted for a new password, input it and type in the following commands to prevent license invalid issues.
+
+#config system ntp<br />
+#set ntpsync disable<br />
+#set type custom<br />
+#end
+<p align="center">
+<img src="https://imgur.com/ne8gmpf.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+<h2> Configuration of the Port 1 or WAN (NAT or Bridge) interface </h2>
