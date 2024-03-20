@@ -4,25 +4,19 @@
 The aim of this project is to showcase how a newly deployed Active Directory is vulnerable to certain attacks and how to properly detect and mitigate those attacks.</b>
 To achieve this, we will design a simple lab, build and then perform internal pentesting against the domain controller. 
 
-<h2>Network Diagram</h2>
+<h2>Network Diagram</h2></b>
 
-Using [draw.io](https://app.diagrams.net), you can recreate this network diagram. Feel free to modify it per your preference.
+Using [draw.io](https://app.diagrams.net/#G1QT02VP_Y-A5MyLR6dgJtdTIgwgl8T8RT#%7B%22pageId%22%3A%22DUj9LQxQ1C3irc8m1Frn%22%7D), you can recreate this network diagram. Feel free to modify it per your preference.
 
+![My Active Directory Lab-Page-2 (2)](https://github.com/custyblak/Active-Directory-Detection-and-Security/assets/100330009/724babfd-9491-4741-8012-378d0d2d7178) </b>
 
-
-<br>NB: At the time of this documentation, this lab was active on [Cyberdefender](https://cyberdefenders.org/blueteam-ctf-challenges/153#tab=details). Hence, I will showcase my approach to the solutions and not explicitly the answers and it can be found [here](https://github.com/custyblak/Network_Forensics_Exercises/blob/main/Cyberdefender/OpenWire%20Challenge/Approach.md)
-
-<h2>Tool used:</h2>
-
-- <b>Wireshark</b>
+NB: Many Enterprises make use of either Palo Alto, FortiGate or Sophos firewalls compared to those of the open source. With regards to this, FortiGate will act as our firewall to enable us learn how to configure, administer policies and manage them. 
 
 
-<h2>Challenge Questions </h2>
-  <br />1. By identifying the C2 IP, we can block traffic to and from this IP, helping to contain the breach and prevent further data exfiltration or command execution. Can you provide the IP of the C2 server that communicated with our server?<br />
-  <br />2. Initial entry points are critical to trace back the attack vector. What is the port number of the service the adversary exploited?<br />
-  <br />3. Following up on the previous question, what is the name of the service found to be vulnerable?<br />
-  <br />4. The attacker's infrastructure often involves multiple components. What is the IP of the second C2 server?<br />
-  <br />5. Attackers usually leave traces on the disk. What is the name of the reverse shell executable dropped on the server?<br />
-  <br />6. What Java class was invoked by the XML file to run the exploit?<br />
-  <br />7. To better understand the specific security flaw exploited, can you identify the CVE identifier associated with this vulnerability?<br />
-  <br />8. What is the vulnerable Java method and class that allows an attacker to run arbitrary code? (Format: Class.Method)
+<h2> Requirement / Specification</h2>
+
+- <b>VMware Workstation or VirtualBox</b>
+- <b>Laptop/Desktop with atleast 16-32GB RAM and virtualization support enabled on your BIOS</b>
+- <b>Storage capacity: Atleast 250GB </b>
+
+[Next: VM Installations](https://github.com/custyblak/Active-Directory-Detection-and-Security/blob/main/VM%20installation.md)
