@@ -4,7 +4,7 @@ NB: VirtualBox can also be used for this lab if VMware Workstation is not an opt
 
 Once downloaded, install it on your PC. Reference this [YouTube](https://youtu.be/gp5eXjWZUBk) video on how to install a VMware workstation on a PC. 
 
-<h1> Downloading and Installing FortiGate VMware image </h1>
+<h2> Downloading and Installing FortiGate VMware image </h2>
 
 Firstly, you will have to register with your email address on the Fortinet support portal this is [link](https://support.fortinet.com/cred/#/sign-up) or sign in if you already have an account registered. 
 
