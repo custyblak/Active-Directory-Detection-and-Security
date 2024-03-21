@@ -1,4 +1,4 @@
-<h1> Downloading and Installing VMware Workstation </h1>
+<h2> Downloading and Installing VMware Workstation </h2>
 
 NB: VirtualBox can also be used for this lab if VMware Workstation is not an option as a result of its paid license. You can download the latest version from [here](https://www.virtualbox.org/wiki/Downloads). However, I will make use VMware and it can be downloaded for [here](https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html). </b>
 
@@ -107,15 +107,15 @@ Use the following below: <br />
 Notice that the mode for the port 2 is static and this is because we want to assign it an ip address which will act as a gateway for the 192.168.10.0/24 subnet. Now, use the **show** command to review what you configured.<br />
 Repeat this configuration for the other interfaces. However, ensure you set the adequate IP addresses and aliases for each of the adapters or you can set them up from the GUI but to do this, we will have to install the other VMs first. 
 
-<h1> Downloading and Installing Kali Box </h1>
+<h2> Downloading and Installing Kali Box </h2>
 
 This is similar to the installation of the FortiGate. However, make use of this [resource](https://youtu.be/i0j-6iFBozg) as a guide. 
 
-<h1> Downloading and Installing Window's Server 2019 for the Domain Controller </h1> 
+<h2> Downloading and Installing Window's Server 2019 for the Domain Controller </h2> 
 
 Kindly make use of this [resource](https://youtu.be/lwxNGUIEB2A) as a guide.
 
-<h1> Downloading and Installing Splunk </h1>
+<h2> Downloading and Installing Splunk </h2>
 
 Kindly make use of this [resource](https://www.youtube.com/watch?v=ia9E4x8iVDk&list=PLDqMNdDvMsRkmtiKcZwbhOz7MeLQE0r3G&index=8) as a guide.
 
