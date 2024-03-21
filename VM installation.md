@@ -55,7 +55,13 @@ Also from the diagram, we have different subnets. To add those subnet names to t
 <p align="center">
 <img src="https://imgur.com/VtjJqaI.png" height="100%" width="80%" alt="LAN Segment config"/> 
 <br />
-  
+   
+<b>*Network Adapter 1: NAT or Bridge*</b><br />
+<b> *Network Adapter 2: AD LAN*</b><br />
+<b> *Network Adapter 3: SERVER LAN*</b><br />
+<b> *Network Adapter 4: MONITORING*</b><br />
+<b> *Network Adapter 5: GUEST*</b><br />
+
 After this has been done, go back to the various network adapters and select each of those LAN segments for each. Save your configuration and now start the virtual machine.
 Log into the VM after bootup with the username as **admin** and **no password**. You will be prompted for a new password, input it and type in the following commands to prevent license invalid issues.
 
@@ -67,4 +73,50 @@ Log into the VM after bootup with the username as **admin** and **no password**.
 <img src="https://imgur.com/ne8gmpf.png" height="70%" width="80%" alt="NTP check"/> 
 <br />
 
-<h2> Configuration of the Port 1 or WAN (NAT or Bridge) interface </h2>
+<h2> Configuration of the FortiGate interfaces </h2>
+
+<h3> Port 1 (NAT or Bridge) </h3>
+
+So, we will starts with the Port 1 as WAN and this points the first network adapter we have connected as **NAT** or **Bridge**. This interface will be configured as **DHCP** so as to receive IP address from our host PC for internet connectivity. The following command will enable us achieve this.
+
+<b>config system interface</b>: This command allows you to configure any of the interfaces via FortiGate CLI<br />
+<b>edit port 1</b>: Just as the name implies, you want to edit port 1.<br />
+<b>set mode dhcp</b>: Sets the interface to receive an IP address from the host PC <br />
+<b>set role wan</b>: The tells the interface that it is responsible for our internet connectivity.<br />
+<b>set alias WAN</b>: This is optionally. However, it helps users to easily identify the use of the interface<br />
+<b>set allowaccess http https ssh ping</b>: This tells what services are allowed on this port.<br />
+<br>Now use the **show** command to review what you have configured on that interface.
+
+<p align="center">
+<img src="https://imgur.com/nPJY74d.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+Now, lets configure the second interface and from how we mapped the LAN segments above, the network adapter 2 is assigned to the **AD LAN** and from our diagram, this LAN is assigned to 192.168.10.0/24 subnet. To configure this, simply type in **next** after the output of the **show** command to go back to the interfaces prompt. From there, type in **edit port2** as seen in the snippet below to start the configuration on the interface. 
+
+<p align="center">
+<img src="https://imgur.com/6EliO2k.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+   
+Use the following below: <br />
+<b>set mode static</b><br />
+<b>set role lan</b><br />
+<b>set ip 192.168.10.1/24</b><br />
+<b>set alias AD LAN</b><br />
+<b>set allowaccess http https ssh ping</b><br />
+
+Notice that the mode for the port 2 is static and this is because we want to assign it an ip address which will act as a gateway for the 192.168.10.0/24 subnet. Now, use the **show** command to review what you configured.<br />
+Repeat this configuration for the other interfaces. However, ensure you set the adequate IP addresses and aliases for each of the adapters or you can set them up from the GUI but to do this, we will have to install the other VMs first. 
+
+<h1> Downloading and Installing Kali Box </h1>
+
+This is similar to the installation of the FortiGate. However, make use of this [resource](https://youtu.be/i0j-6iFBozg) as a guide. 
+
+<h1> Downloading and Installing Window's Server 2019 for the Domain Controller </h1> 
+
+Kindly make use of this [resource](https://youtu.be/lwxNGUIEB2A) as a guide.
+
+<h1> Downloading and Installing Splunk </h1>
+
+Kindly make use of this [resource](https://www.youtube.com/watch?v=ia9E4x8iVDk&list=PLDqMNdDvMsRkmtiKcZwbhOz7MeLQE0r3G&index=8) as a guide.
+
+The reference guides are from [Cyberwoxacademy.com](https://cyberwoxacademy.com/building-a-cybersecurity-homelab-for-detection-monitoring/)
