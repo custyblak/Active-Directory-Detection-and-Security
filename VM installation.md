@@ -58,9 +58,7 @@ Also from the diagram, we have different subnets. To add those subnet names to t
    
 <b>*Network Adapter 1: NAT or Bridge*</b><br />
 <b> *Network Adapter 2: AD LAN*</b><br />
-<b> *Network Adapter 3: SERVER LAN*</b><br />
-<b> *Network Adapter 4: MONITORING*</b><br />
-<b> *Network Adapter 5: GUEST*</b><br />
+<b> *Network Adapter 3: GUEST LAN*</b><br />
 
 After this has been done, go back to the various network adapters and select each of those LAN segments for each. Save your configuration and now start the virtual machine.
 Log into the VM after bootup with the username as **admin** and **no password**. You will be prompted for a new password, input it and type in the following commands to prevent license invalid issues.
@@ -105,18 +103,90 @@ Use the following below: <br />
 <b>set allowaccess http https ssh ping</b><br />
 
 Notice that the mode for the port 2 is static and this is because we want to assign it an ip address which will act as a gateway for the 192.168.10.0/24 subnet. Now, use the **show** command to review what you configured.<br />
-Repeat this configuration for the other interfaces. However, ensure you set the adequate IP addresses and aliases for each of the adapters or you can set them up from the GUI but to do this, we will have to install the other VMs first. 
+Use the command **get system interface physical** to show the IP addresses configured on each interface. Copy the IP address assigned to the port 1 to your PC browser. 
 
+<p align="center">
+<img src="https://imgur.com/VmnRlJE.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+Login to configure the remaining interfaces and internet connectivities to the VMs.
+
+<p align="center">
+<img src="https://imgur.com/Ut6ldii.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+Navigate to the **Netork > Interface** tab to port 2 and 3 respectively. Configure their IP addresses as described on the diagram in the IP/Netmask column, fill in the aliases and roles, specify the respective administrative accesses - port 2: HTTPS, Ping; port 3: Ping. 
+
+<p align="center">
+<img src="https://imgur.com/XapzRyw.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+<p align="center">
+<img src="https://imgur.com/clfMN1B.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+Save and now navigate to the **Static Route** still under the Network row. We will create a default route via the port 1 interface for internet connectivity. Click on the **+** sign and add the port 1 interface, leave others as default and then save.
+
+<p align="center">
+<img src="https://imgur.com/X1wwy4C.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+<p align="center">
+<img src="https://imgur.com/lYFF2OA.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+   
+Next, go to **Policy & Objects** > **Firewall policy**. Click on **Create new** (NB: For the different LANs and WAN interfaces to communicate, we have to create firewall rules or policies that will allow this communication. Without policies, each LAN will be isolated. And don't forget that the PCs within in the diagram will require internet connection and somethings internet access will be granted to our servers for updates. Hence, the need to create rules.)
+
+<p align="center">
+<img src="https://imgur.com/t3lEzy5.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+<h2> Installing Splunk on Ubuntu VM</h2>
+
+Download the Ubuntu Desktop version [here](https://ubuntu.com/download/desktop) and install with the default settings. Before powering on the machine after installing the VM, enter the Virtual Machine Settings and change the **Network Adapter** setting to **LAN Segment** with **AD LAN** selected.
+<p align="center">
+<img src="https://imgur.com/OAknXlQ.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+Now, lets configure a static IP address for the Splunk Server. To do this, we will have to navigate into the **Netplan** directory using the **cd /etc/netplan/* to modify the configuration file written using YAML and end with the extension .yaml.
+
+In this directory, you will see a file named *01-network-manager-all.yaml* using the *ls* command. NB: If you don't see one, create this exact file using the *touch* command. 
+
+<p align="center">
+<img src="https://imgur.com/rBzAEsu.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+Modify the content of this file using either VIM or NANO, depending on the one you are most comfortable with. 
+using the *sudo vi 01-network-manager-all.yaml*, below is what you will see by default
+
+<p align="center">
+<img src="https://imgur.com/NcgzczG.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+Next, add the *ethernets* and reference the network adapter name. (NB: To get the network adapter name, open a new tab and simply run the **IP addr** command)
+
+<p align="center">
+<img src="https://imgur.com/6d8Hvhc.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+<p align="center">
+<img src="https://imgur.com/yMNzqFj.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+As we are setting a static IP and we do not want to dynamically assign an IP to this network adapter, we'll set *dhcp4* to **no**. Now, we'll specify the Splunk static IP as outlined in the diagram with the default gateway and name server the firewall's IP address of LAN segment. Use the command: **sudo netplan try** to permanently save the config. Reconfirm if the changes have taken effect using **ip addr**. Now, ping the firewall ip address (192.168.10.1) and from the firewall, ping the server ip address.
+
+<p align="center">
+<img src="https://imgur.com/FpOia5j.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+   
 <h2> Downloading and Installing Kali Box </h2>
 
 This is similar to the installation of the FortiGate. However, make use of this [resource](https://youtu.be/i0j-6iFBozg) as a guide. 
 
-<h2> Downloading and Installing Window's Server 2019 for the Domain Controller </h2> 
+<h2> Domain Controller Setup and addition of users & PCs </h2> 
 
-Kindly make use of this [resource](https://youtu.be/lwxNGUIEB2A) as a guide.
 
-<h2> Downloading and Installing Splunk </h2>
 
-Kindly make use of this [resource](https://www.youtube.com/watch?v=ia9E4x8iVDk&list=PLDqMNdDvMsRkmtiKcZwbhOz7MeLQE0r3G&index=8) as a guide.
+
 
 The reference guides are from [Cyberwoxacademy.com](https://cyberwoxacademy.com/building-a-cybersecurity-homelab-for-detection-monitoring/)
