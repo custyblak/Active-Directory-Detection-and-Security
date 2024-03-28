@@ -173,12 +173,36 @@ Next, add the *ethernets* and reference the network adapter name. (NB: To get th
 <img src="https://imgur.com/yMNzqFj.png" height="70%" width="80%" alt="NTP check"/> 
 <br />
 
-As we are setting a static IP and we do not want to dynamically assign an IP to this network adapter, we'll set *dhcp4* to **no**. Now, we'll specify the Splunk static IP as outlined in the diagram with the default gateway and name server the firewall's IP address of LAN segment. Use the command: **sudo netplan try** to permanently save the config. Reconfirm if the changes have taken effect using **ip addr**. Now, ping the firewall ip address (192.168.10.1) and from the firewall, ping the server ip address.
+As we are setting a static IP and we do not want to dynamically assign an IP to this network adapter, we'll set *dhcp4* to **no**. Now, we'll specify the Splunk server static IP as outlined in the diagram with the default gateway and name server the firewall's IP address of LAN segment. Use the command: **sudo netplan try** to permanently save the config. Reconfirm if the changes have taken effect using **ip addr**. Now, ping the firewall ip address (192.168.10.1) and from the firewall, ping the server ip address.
 
 <p align="center">
 <img src="https://imgur.com/FpOia5j.png" height="70%" width="80%" alt="NTP check"/> 
 <br />
-   
+
+Now, let's install splunk on the server. Firstly download the splunk application from the splunk [website](https://www.splunk.com/), 
+
+- click on “Free Splunk“ button, Create an account or login.
+
+- Click on the "Free Trials and Downloads page" on the dashboard, >> "Splunk Enterprise" >> "Get my free trial"
+
+- Select the Linux package and download the .deb file
+
+- Open the terminal and navigate to the downloads directory
+
+
+Untar the file
+
+
+Navigate to the ~/splunk/bin directory
+
+Use the command ./splunk start to start the splunk instance.
+
+Enter an admin username and password of your choice
+
+Navigate to http://splunk:8000 your browser
+
+Log in with the username and the password you configured in the previous step.
+
 <h2> Downloading and Installing Kali Box </h2>
 
 This is similar to the installation of the FortiGate. However, make use of this [resource](https://youtu.be/i0j-6iFBozg) as a guide. 
