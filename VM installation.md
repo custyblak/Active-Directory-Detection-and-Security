@@ -200,7 +200,7 @@ Now, let's install splunk on the server. Firstly download the splunk application
 <br />
 
 <p align="center">
-<img src="https://imgur.com/2ZlXQ9r.png" height="70%" width="80%" alt="NTP check"/> 
+<img src="https://imgur.com/XVel9uR.png" height="70%" width="80%" alt="NTP check"/> 
 <br />
 
 - Switch to Splunk user using *sudo su -splunk*, navigate to */bin* directory  and then use the command **./splunk start** to start the splunk instance. Agree to the license contract and then enter an admin username and password of your choice. At the end of your startup, a URL will be displayed on your commandline. Copy that to your browser and now login
@@ -211,7 +211,7 @@ Now, let's install splunk on the server. Firstly download the splunk application
 
 <h2> Download and install Domain Controller </h2>
 
-
+Download Window Server 2019 from the Microsoft Evaluation Center [here](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019) and Windows 10 from [here](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-10-enterprise)
 
 <h2> Downloading and Installing Kali Box </h2>
 
