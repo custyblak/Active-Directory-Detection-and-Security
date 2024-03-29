@@ -187,21 +187,31 @@ Now, let's install splunk on the server. Firstly download the splunk application
 
 - Select the Linux package and download the .deb file
 
-- Open the terminal and navigate to the downloads directory
+- Navigate to the downloads directory and open the terminal
+
+<p align="center">
+<img src="https://imgur.com/xKRa7ZZ.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+   
+- Install the file using the *sudo apt install ./<name of the splunk file>. You can use your tab key to auto complete.
+
+<p align="center">
+<img src="https://imgur.com/nMJ54ez.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+<p align="center">
+<img src="https://imgur.com/2ZlXQ9r.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+- Switch to Splunk user using *sudo su -splunk*, navigate to */bin* directory  and then use the command **./splunk start** to start the splunk instance. Agree to the license contract and then enter an admin username and password of your choice. At the end of your startup, a URL will be displayed on your commandline. Copy that to your browser and now login
+
+<p align="center">
+<img src="https://imgur.com/wRD0sBT.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+<h2> Download and install Domain Controller </h2>
 
 
-Untar the file
-
-
-Navigate to the ~/splunk/bin directory
-
-Use the command ./splunk start to start the splunk instance.
-
-Enter an admin username and password of your choice
-
-Navigate to http://splunk:8000 your browser
-
-Log in with the username and the password you configured in the previous step.
 
 <h2> Downloading and Installing Kali Box </h2>
 
