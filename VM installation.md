@@ -235,7 +235,7 @@ Download Window Server 2019 from the Microsoft Evaluation Center [here](https://
   - Run ping tests to the gateway ip and internet (*NB: Access to the internet on the domain is not advisable. This will be later blocked on the firewall*)
 
 <p align="center">
-<img src="https://imgur.com/JmxYB9v.png" height="70%" width="80%" alt="NTP check"/> 
+<img src="https://i.postimg.cc/xdF3GYjM/AD-ip-address-config.png" height="70%" width="80%" alt="NTP check"/> 
 <br />
 
 <p align="center">
