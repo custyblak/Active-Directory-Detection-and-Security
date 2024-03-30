@@ -273,5 +273,17 @@ Download Window Server 2019 from the Microsoft Evaluation Center [here](https://
    
 <h2> Downloading and Installing Kali Box </h2>
 
-This is similar to the installation of the FortiGate. However, make use of this [resource](https://youtu.be/i0j-6iFBozg) as a guide. 
+- Head over to the official Kali Downloads page: https://www.kali.org/get-kali/.
+- Navigate to the "Virtual Machines" section and choose the appropriate VHD download for your VMware version (64-bit).
+- Open VMware Workstation Player: Launch the VMware application on your computer.
+- Click on "File" -> "New Virtual Machine."
+- In the "New Virtual Machine Wizard," select "Typical" and click "Next."
+- Choose "I will install the operating system later" and click "Next."
+- Select the compatibility level based on your system resources and desired features for Kali. Generally, " Workstation 16.x or later (recommended)" is a good choice. Click "Next."
+- Choose "Linux" for the Guest operating system and select "Debian 10x". Click "Next."
+- Provide a name for your Kali virtual machine (e.g., Kali-VHD) and choose a destination folder to store the virtual machine files. Click "Next."
+- In the "Specify Disk" section, select "Use an existing virtual disk (VHD)" option.
+- Click "Browse" and locate the downloaded Kali Linux VHD file. Click "Next."
+- Under the "Network Adapter", select "LAN Segment >> Guest"
+- Review Settings and Finish.
 
