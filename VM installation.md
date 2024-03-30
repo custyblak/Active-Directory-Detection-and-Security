@@ -287,3 +287,41 @@ Download Window Server 2019 from the Microsoft Evaluation Center [here](https://
 - Under the "Network Adapter", select "LAN Segment >> Guest"
 - Review Settings and Finish.
 
+Once the installation is done, login and the navigate to the  "/etc/network/interfaces" file with any text editor of your choice and input the below configuration. But, firstly use the **ip addr** to get the name of the interface on which the static IP address would be configured on.
+
+<p align="center">
+   <img src="https://imgur.com/TZZJykM.png" height="50%" width="80%" alt="NTP check"/> 
+   <br />
+
+From the snippet above, mine is **eth0*
+
+- auto eth0
+- iface eth0 inet static
+- address 192.168.20.10/24
+- gateway 192.168.20.1
+
+I will use the VIM Editor for this. 
+
+<p align="center">
+   <img src="https://imgur.com/GJZ7EOM.png" height="50%" width="80%" alt="NTP check"/> 
+   <br />
+
+Once on the iface lo inet loopback end, press the letter "o" to input the above configure. Once done, use the "esc" key to exit the insert mode, then press the ":x" to save and exit the configuration file. Now, run the "sudo systemctl restart networking.service" to effect the change.
+
+<p align="center">
+   <img src="https://imgur.com/w0yfBZu.png" height="50%" width="80%" alt="NTP check"/> 
+   <br />
+
+Next, configure the DNS file to enable internet connection on the Kali VM by navigating to the /etc/resolv.conf file using any editor of your choice. NB: If there is no resolv.conf file, you can create one using the "sudo vim /etc/resolv.conf"
+
+- nameserver 192.168.20.1
+- nameserver 8.8.8.8
+  
+Exit the insert mode by pressing the "esc" key, save and exit using ":x"
+
+<p align="center">
+   <img src="https://imgur.com/qQBVHEW.png" height="50%" width="80%" alt="NTP check"/> 
+   <br />
+
+Run your ping tests to the gateway and internet (Google.com)
+
