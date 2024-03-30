@@ -213,14 +213,65 @@ Now, let's install splunk on the server. Firstly download the splunk application
 
 Download Window Server 2019 from the Microsoft Evaluation Center [here](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019) and Windows 10 from [here](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-10-enterprise)
 
+- Install the VM on VMware using the default settings. However, select the option of "I will install the operating system later" to avoid *no operating system found* error.
+
+<p align="center">
+<img src="https://imgur.com/1QWZVws.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+- After the VM have been installed, edit the settings and select the **AD LAN** of the LAN Segment
+  
+<p align="center">
+<img src="https://imgur.com/3fbLeMm.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+- Power up the VM, click on **install now** and select the Windows Server 2019 standard Evaluation (Desktop Experience). Accept the License Terms and click Next
+
+- Select Custom Install and continue with the default *Next* prompts
+- Input your password and save.
+- Once logged in, configure static IP address and gateway then change the hostname.
+  - Navigate to **Control Panel > Network and Internet > Network Connections**
+  - Input the following IP address configuration based on our diagram.
+  - Run ping tests to the gateway ip and internet (*NB: Access to the internet on the domain is not advisable. This will be later blocked on the firewall*)
+
+<p align="center">
+<img src="https://imgur.com/JmxYB9v.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+<p align="center">
+<img src="https://imgur.com/x8JLP3k.png" height="70%" width="80%" alt="NTP check"/> 
+<br />
+
+- Rename the Domain Controller to **Empire.DC1**
+
+  - Navigate to *File Explorer >> My PC* in the search bar
+ 
+   <p align="center">
+   <img src="https://imgur.com/fHMKjyq.png" height="70%" width="80%" alt="NTP check"/> 
+   <br />
+   
+  - Right-click and select properties
+
+   <p align="center">
+   <img src="https://imgur.com/dO2tSSg.png" height="70%" width="80%" alt="NTP check"/> 
+   <br />
+
+  - Click on *Change Settings*
+
+   <p align="center">
+   <img src="https://imgur.com/vmSHFk5.png" height="70%" width="80%" alt="NTP check"/> 
+   <br />
+
+  - Input the above name into the Computer description under Computer Name tab and then click on the "change" button to re-enter the same name into the "Computer Name" space
+
+   <p align="center">
+   <img src="https://imgur.com/fB7tGXe.png" height="70%" width="80%" alt="NTP check"/> 
+   <br />
+
+  - Apply the setting and then select Restart Now
+
+   
 <h2> Downloading and Installing Kali Box </h2>
 
 This is similar to the installation of the FortiGate. However, make use of this [resource](https://youtu.be/i0j-6iFBozg) as a guide. 
 
-<h2> Domain Controller Setup and addition of users & PCs </h2> 
-
-
-
-
-
-The reference guides are from [Cyberwoxacademy.com](https://cyberwoxacademy.com/building-a-cybersecurity-homelab-for-detection-monitoring/)
