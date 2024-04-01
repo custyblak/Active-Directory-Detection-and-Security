@@ -325,3 +325,5 @@ Exit the insert mode by pressing the "esc" key, save and exit using ":x"
 
 Run your ping tests to the gateway and internet (Google.com)
 
+<h2> Installation of the Workstations. </h2>
+Having worked you through the installation of the Window's server, I leave this as an assignment. Just follow the same steps.
