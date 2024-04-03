@@ -89,10 +89,105 @@ Follow the steps to download and install sysmon
 <p align="center">
 <img src="https://imgur.com/F0YV4dx.png" height="100%" width="80%" alt="Fortinet Support page"/> 
 <br />
+   
 - Install the sysmon driver and service using the command .\Sysmon64.exe -i .\Sysmonconfig.xml. NB: Use your tab key to auto-complete the command.
+- Verify that the Sysmon service is running by navigating to the Services, look for Sysmon service. Next you can navigate to the Event Viewer >> Applications and Services logs >> Microsoft >> Windows >> Sysmon >> Operational
 
 <p align="center">
 <img src="https://imgur.com/kvhGDlv.png" height="100%" width="80%" alt="Fortinet Support page"/> 
 <br />
 
+<h2> Installation of Splunk's Universal Forwarder on the domain controller. </h2>
 
+- Sign into your Splunk account, navigate to the Products >> Free Trials & Downloads >> Universal Forwarder.
+- Select the operating system, select the 64 bit option and click on "Download Now"
+
+<p align="center">
+<img src="https://imgur.com/sYpa0tR.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+   
+- Start the installation of the application. Check the license agreement box and click on "Next"
+  
+<p align="center">
+<img src="https://imgur.com/S3vya4S.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+
+- Type in the username of your splunk instance and leave the password as randomly generated.
+- Skip the part of the deployment server because for this Lab, there aren't
+- Under the Receiving indexer, input the IP address of your splunk server and the default port 9997
+
+<p align="center">
+<img src="https://imgur.com/Ij8K174.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+
+- Click on "Next" and then "Install"
+
+After the installation, we will have to configure the log parameters that will be sent to Splunk. To do this, 
+
+- Open Notepad as an administrator, copy and paste the following below into the notepad 
+  
+[WinEventLog://Application]
+
+index = DomainController
+
+disabled = false
+
+[WinEventLog://Security]
+
+index = DomainController
+
+disabled = false
+
+[WinEventLog://System]
+
+index = DomainController
+
+disabled = false
+
+[WinEventLog://Microsoft-Windows-Sysmon/Operational]
+
+index = DomainController
+
+disabled = false
+
+renderXml = true
+
+source = XmlWinEventLog:Microsoft-Windows-Sysmon/Operational
+
+*NB: On the Splunk, an index called DomainController will be created to accommodate these log parameters.*
+
+- Save the file to this folder - **C:\Program Files\SplunkUniversalForwarder\etc\system\local** as *inputs.conf*
+- Close and exit the folder.
+- Change the Logon as user from "NT SERVICE\SplunkForwarder" to "Local System Account". So as to allow permissions to collect all necessary logs.
+
+<p align="center">
+<img src="https://imgur.com/aZU6ah3.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br /> 
+   
+- Restart the SplunkForwarder service under Services. Ensure you open services as an administrator. Always restart the service anytime you modify the inputs.conf file.
+
+<p align="center">
+<img src="https://imgur.com/SLEpKWu.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+
+- Next, log into your Splunk dashboard, goto settings >> indexes >> New index.
+- Add the name of the index we configured on the inputs.conf file, then save the changes
+
+<p align="center">
+<img src="https://imgur.com/Sn3DaMw.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+
+<p align="center">
+<img src="https://imgur.com/IipTzii.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+
+Next, configure the spluk to receive the logs on the default port 9997. To do this, follow the steps below.
+
+- Under settings, click on **Forwarding & Receiving**
+- Under "Receiving Data", click on "Add new". Input the default port 9997 and save.
+
+<p align="center">
+<img src="https://imgur.com/lGYjQ04.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+
+Now, we should see event on the splunk dashboard. Navigate to "Apps" >> "Search & Reporting", enter the index=DomainController and hit "Ok"
