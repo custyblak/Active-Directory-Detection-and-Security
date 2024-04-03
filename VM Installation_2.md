@@ -69,9 +69,30 @@ Sign in with any of the usernames earlier created. Repeat the process for the se
 
 <h2> Installation of Sysmon and Splunk's Universal Forwarder on the Domain Controller </h2>
 
+Follow the steps to download and install sysmon
 
+- Download the sysmon application from https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon and the configuration file onto your domain controller server.
 
+<p align="center">
+<img src="https://imgur.com/EHKZ9pw.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+- Extract the sysmon application zip file to a destination of your choice.
+- Navigate to this github repository by [Olaf Hartong](github.com/olafhartong/sysmon-modular/blob/master/sysmonconfig.xml)
+- Click on "Raw"
+- Right-click and select "save as". Save the .xml file with a name of your choice to the sysmon folder that contains the application.
+- Open Powershell as an admin and navigate to the directory where the files are.
 
+<p align="center">
+<img src="https://imgur.com/j4xHt9g.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
 
+<p align="center">
+<img src="https://imgur.com/F0YV4dx.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+- Install the sysmon driver and service using the command .\Sysmon64.exe -i .\Sysmonconfig.xml. NB: Use your tab key to auto-complete the command.
+
+<p align="center">
+<img src="https://imgur.com/kvhGDlv.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
 
 
