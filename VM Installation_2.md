@@ -190,4 +190,8 @@ Next, configure the spluk to receive the logs on the default port 9997. To do th
 <img src="https://imgur.com/lGYjQ04.png" height="100%" width="80%" alt="Fortinet Support page"/> 
 <br />
 
-Now, we should see event on the splunk dashboard. Navigate to "Apps" >> "Search & Reporting", enter the index=DomainController and hit "Ok"
+Now, we should see event on the splunk dashboard. Navigate to "Apps" >> "Search & Reporting", enter the index=DomainController and hit "OK"
+
+<p align="center">
+<img src="https://imgur.com/XxIzipB.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
