@@ -236,3 +236,27 @@ The purpose of this is to send the firewall logs to splunk for easy analysis dur
 <p align="center">
 <img src="https://imgur.com/UBm85sg.png" height="100%" width="80%" alt="Fortinet Support page"/> 
 <br />
+
+- Sign into your FortiGate firewall and navigate to the CLI to input the below commands
+     - config log syslogd setting
+     - set status enable
+     - set server {IP address of your splunk server}. For this lab, it is 192.168.10.25
+     - show. To view your configuration
+     - Get. To show the full configuration.
+
+<p align="center">
+<img src="https://imgur.com/9rUKcGB.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+
+- Navigate to the "Log & Report" tab >> "Log Setting", enable syslog logging and input your splunk IP address.
+
+<p align="center">
+<img src="https://imgur.com/6LNg2RS.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+
+- Confirm that the log are been received via the increasing counts on the configured index and via the search bar.
+
+<p align="center">
+<img src="https://imgur.com/aSDhAcw.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+
