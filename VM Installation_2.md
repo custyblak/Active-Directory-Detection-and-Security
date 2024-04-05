@@ -195,3 +195,44 @@ Now, we should see event on the splunk dashboard. Navigate to "Apps" >> "Search 
 <p align="center">
 <img src="https://imgur.com/XxIzipB.png" height="100%" width="80%" alt="Fortinet Support page"/> 
 <br />
+
+<h2> Intergrating FortiGate Logs into Splunk </h2>
+The purpose of this is to send the firewall logs to splunk for easy analysis during incident response. To do this, we will have to install the FortiGate Add-On and specify the default syslog UDP port. Follow the steps below:
+
+- Log into your splunk dashboard, navigate to "APPS" >> "Find more apps"
+
+<p align="center">
+<img src="https://imgur.com/Qdej9G8.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+
+- Search for "FortiGate" in the search bar and install the "Fortinet FortiGate Add-On for Splunk". You will be propped to input your splunk username and password. Afterwards, the add-on will be installed.
+
+<p align="center">
+<img src="https://imgur.com/7zFMKxy.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+
+- Goto "Settings" >> Data Inputs
+
+<p align="center">
+<img src="https://imgur.com/c8Rn5fI.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+
+- Under the Data Inputs >> UDP, click on "Add new"
+- In the port session, specify the syslog default port 514, then "Next"
+- Search for "fgt_log" and select it in the "Select Sourcetype" drop-down. Also, ensure that the "APP Context" is "Search & Reporting". 
+
+<p align="center">
+<img src="https://imgur.com/t9PwC9Z.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+
+<p align="center">
+<img src="https://imgur.com/drYseVa.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+   
+- Create a new index for the FortiGate log or you can use the default. Click on Next
+
+- Review and then submit
+
+<p align="center">
+<img src="https://imgur.com/UBm85sg.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
