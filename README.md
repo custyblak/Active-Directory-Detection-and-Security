@@ -19,4 +19,4 @@ NB: Many Enterprises make use of either Palo Alto, FortiGate or Sophos firewalls
 - <b>Laptop/Desktop with atleast 16-32GB RAM and virtualization support enabled on your BIOS</b>
 - <b>Storage capacity: Atleast 250GB </b>
 
-*Next:* [VM Installations](https://github.com/custyblak/Active-Directory-Detection-and-Security/blob/main/VM%20installation.md)
+*Next:* [VM Installations](https://github.com/custyblak/Active-Directory-Detection-and-Security/blob/main/Installation%20of%20VMs.md)
