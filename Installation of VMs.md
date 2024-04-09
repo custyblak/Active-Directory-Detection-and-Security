@@ -331,4 +331,4 @@ Having worked you through the installation of the Window's server, I leave this 
 
 <br>
 
-*Next:* [Installation of added features](https://github.com/custyblak/Active-Directory-Detection-and-Security/blob/main/VM%20Installation_2.md)
+*Next:* [Installation of added features](https://github.com/custyblak/Active-Directory-Detection-and-Security/blob/main/Installation%20of%20Sysmon%2C%20Universal%20Forwarder%20etc.md)
