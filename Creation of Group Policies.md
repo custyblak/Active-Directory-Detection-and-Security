@@ -1,6 +1,5 @@
-<h2> Installation of Active Directory features, addition of users and computers </h2>
-
-To begin, log into the server, navigate to the "Manage" tab and click on "Add Roles & Features" then "Next" till you get to the Server Roles menu. Don't change the default settings.
+<h2> Creating Baseline GPO</h2>
+This lab focuses on securing 
 
 <p align="center">
 <img src="https://imgur.com/gt23in5.png" height="100%" width="80%" alt="Fortinet Support page"/> 
