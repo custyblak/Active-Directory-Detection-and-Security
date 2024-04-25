@@ -52,7 +52,41 @@ Given that we are just build the security of our domain controller from the grou
 - Right-click on both of them and select **Enforced**. Next move the **Domain Security Policy** to the top followed by the **Domain Controller Security Policy**
 
 With this, you have successfully configured a security baseline policies recommended by Microsoft for your domain. 
-<img src="https://imgur.com/5gbUgd1.png" height="100%" width="80%" alt="Fortinet Support page"/> 
-<br />
-   
 
+<h2> Other Security Controls to implement.</h2>
+
+<h3>Change the default domain Administrator account and passwords</h3>
+   It is advisable to rename your default domain Administrator making it slightly more difficult for attackers to guess the account name for brute-force password cracking attempts at least 1x or 2x per year. In addition to this, change the Administrator & KRBTGT passwords should be changed every year & when an AD admin leaves. 
+
+Let's rename the Administrator's account using GPO.
+- Navigate to the Group Policy Management Console
+- Create a new GPO to identify the desired function.
+- Navigate to Computer Configuration >>Windows Settings >>Security Settings >> Local Policies >> Security Options.
+- Check the "Define this policy setting" and input any name of your choice.
+- Link the GPO to your domain and then enforce it.
+
+<p align="center">
+<img src="https://imgur.com/zX492Ce.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+
+I will leave you to change the passwords of both the Administrator and KRBTGT accounts.
+
+<h3>Set all admin accounts to “sensitive & cannot be delegated”</h3>
+This prevents an admin account's credentials from being delegated to other users or services, making it more difficult for attackers to move laterally through the network and compromise additional systems. Also, it enforces the principle of least priviledge because Admin accounts should only be used for administrative tasks, and they should not be used for everyday tasks. 
+If you have multiple domain admins, use this powershell cmdlet to effect it
+   ""$admins = Get-ADGroupMember -Identity "Domain Admins"
+foreach ($admin in $admins) {
+  Set-ADAccountControl -Identity $admin.SamAccountName -AccountNotDelegated $true} ""
+
+However, you can also effect it from the GUI by navigating to each of the domain admin names, then click on **properties >> Accounts >> Account Options, scroll down and check the "Account is sensitive and cannot be delegated" box**.
+
+<p align="center">
+<img src="https://imgur.com/zGFeR0P.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+
+<h3>Add admin accounts to “Protected User's Group”</h3>
+The "Protected Users" group enforces limitations on how credentials are stored on devices. When a domain user in this group logs in, their credentials are not cached locally. Instead, they are obtained directly from the domain controller and this reduces the risk of attackers stealing credentials from local machine caches to gain access via Pass-the-Hash attack.
+
+<p align="center">
+<img src="https://imgur.com/LWC6bhN.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
