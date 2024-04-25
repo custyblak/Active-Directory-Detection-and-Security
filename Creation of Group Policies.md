@@ -73,10 +73,11 @@ I will leave you to change the passwords of both the Administrator and KRBTGT ac
 
 <h3>Set all admin accounts to “sensitive & cannot be delegated”</h3>
 This prevents an admin account's credentials from being delegated to other users or services, making it more difficult for attackers to move laterally through the network and compromise additional systems. Also, it enforces the principle of least priviledge because Admin accounts should only be used for administrative tasks, and they should not be used for everyday tasks. 
-If you have multiple domain admins, use this powershell cmdlet to effect it
-   ""$admins = Get-ADGroupMember -Identity "Domain Admins"
+If you have multiple domain admins, use this powershell cmdlet to effect it.
+
+  <p></p>$admins = Get-ADGroupMember -Identity "Domain Admins"
 foreach ($admin in $admins) {
-  Set-ADAccountControl -Identity $admin.SamAccountName -AccountNotDelegated $true} ""
+  Set-ADAccountControl -Identity $admin.SamAccountName -AccountNotDelegated $true}</p>
 
 However, you can also effect it from the GUI by navigating to each of the domain admin names, then click on **properties >> Accounts >> Account Options, scroll down and check the "Account is sensitive and cannot be delegated" box**.
 
