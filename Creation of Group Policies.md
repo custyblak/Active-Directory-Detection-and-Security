@@ -91,3 +91,61 @@ The "Protected Users" group enforces limitations on how credentials are stored o
 <p align="center">
 <img src="https://imgur.com/LWC6bhN.png" height="100%" width="80%" alt="Fortinet Support page"/> 
 <br />
+
+<h3>Configure AppLocker on DCs to only allow authorized applications to run</h3>
+
+This enhances the Security Posture of our DC by limiting applications to only those explicitly allowed, you significantly reduce the attack surface. Hence, helps mitigate the risk of malware compromising your DCs and potentially spreading across your network. Also, with AppLocker in place, it becomes easier to identify and investigate any attempt to run unauthorized applications on the DC. The application execution logs provide a clear audit trail, simplifying forensic analysis in case of suspicious activity.
+
+- Create a new group policy and label it "DC Applocker" Right-click to edit it.
+- Navigate to **Computer Configuration >> Windows Setting >> System Services and enable Application Identity** startup mode as **"Automatic"**
+
+<p align="center">
+<img src="https://imgur.com/a7omX8f" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+
+- Continue to Application Control Policies >> Applocker >> Configure rule enforcement to select the rules you want to enforce.
+
+   <p align="center">
+   <img src="https://imgur.com/UJwCIlu.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+   <br />
+
+- Right-click on any rule collection and select "Create new rule"
+
+<p align="center">
+<img src="https://imgur.com/zw3w1GU.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<br />
+
+- Lets create a sample rule to prevent any installation for .exe or .msi files from the Temp Directory.
+   - Skip the default page
+   - Select **Deny** under "Action" and **Everyone** under "User or group". Click on **Next**
+     
+   <p align="center">
+   <img src="https://imgur.com/0mRXYJb.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+   <br />
+
+   - Since we want to prevent any application in the Temp Directory from running, select the **Path** option. Then, **Next**
+ 
+  <p align="center">
+   <img src="https://imgur.com/951A183.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+   <br />
+     
+   - Under the **Path**, click on **Browse Folder**. Select the Temp directory under the C:\Windows\
+ 
+  <p align="center">
+   <img src="https://imgur.com/faZuSIf.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+   <br />
+     
+   - Skip the exceptions page and name the rule.
+
+   <p align="center">
+   <img src="https://imgur.com/ucqnxgh.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+   <br />
+      
+   - Click on Create.
+
+   <p align="center">
+   <img src="https://imgur.com/1kiTX2B.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+   <br />
+
+   - Repeat the above for other rule collections.
+     
