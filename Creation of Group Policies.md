@@ -149,3 +149,39 @@ This enhances the Security Posture of our DC by limiting applications to only th
 
    - Repeat the above for other rule collections.
      
+
+<h3>Block internet access for my DC</h3>
+
+This can be achieved by creating a policy on the firewall to prevent inbound/outbound the domain controller
+- Log into the FortiGate firewall and navigate to **Policy & Objects** >> Addresses.
+- Add the IP address of the DC and save
+
+ <p align="center">
+ <img src="https://imgur.com/DvfdVr1.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+ <br />
+
+- Navigate to the **Firewall Policy** and click on **Create New**
+
+ <p align="center">
+ <img src="https://imgur.com/4KkhPvs.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+ <br />
+
+- Name: Your policy choice name
+- Incoming interface: The interface in the same subnet as the DC IP
+- Outgoint interface: any
+- Source: The newly created IP address of the DC
+- Destination: all
+- Service: all
+- Action: Deny
+
+- Save the policy and move it to the top of the policy table.
+
+ <p align="center">
+ <img src="https://imgur.com/mA90ajV.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+ <br />
+
+ - Confirm via pings on the DC to the internet
+
+<p align="center">
+ <img src="https://imgur.com/sZayBHN.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+ <br />
