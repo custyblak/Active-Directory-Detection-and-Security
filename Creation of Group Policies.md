@@ -185,3 +185,6 @@ This can be achieved by creating a policy on the firewall to prevent inbound/out
 <p align="center">
  <img src="https://imgur.com/sZayBHN.png" height="100%" width="80%" alt="Fortinet Support page"/> 
  <br />
+
+
+[Next: EventID detection on Splunk](https://github.com/custyblak/Active-Directory-Detection-and-Security/blob/main/EventID%20Detection%20on%20Splunk.md)
