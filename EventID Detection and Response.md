@@ -1,6 +1,9 @@
 <h2> EventID detection for Active Directory.</h2>
 
-This Lab provides guidance for implementing Splunk-based detection of critical security events within your Active Directory environment. By leveraging EventID monitoring, you can gain real-time insights into suspicious activities and potential security breaches.
+This Lab provides guidance for implementing Splunk-based detection of critical security events within your Active Directory environment. By leveraging EventID monitoring, you can gain real-time insights into suspicious activities and potential security breaches. 
+
+We will be implementing monitoring for the baseline DC events outlined by **Sean Metcalf** in his [blog](https://adsecurity.org/?p=3377) post. However, for a more comprehensive monitoring solution in a production environment, I recommend considering Sean Metcalf's outlined [DC EventID](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fadsecurity.org%2Fwp-content%2Fuploads%2F2016%2F11%2FDC-Events.xlsx&wdOrigin=BROWSELINK) list available in this Excel spreadsheet.
+
 
 Log into your Active Directory and navigate to **Tools >> Group Policy Management**. 
 
