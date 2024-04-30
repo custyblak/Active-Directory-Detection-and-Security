@@ -260,3 +260,4 @@ The purpose of this is to send the firewall logs to splunk for easy analysis dur
 <img src="https://imgur.com/aSDhAcw.png" height="100%" width="80%" alt="Fortinet Support page"/> 
 <br />
 
+[Next: Create Group Policies ](https://github.com/custyblak/Active-Directory-Detection-and-Security/blob/main/Creation%20of%20Group%20Policies.md)
