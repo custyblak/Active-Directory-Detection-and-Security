@@ -27,13 +27,16 @@ Active Directory security relies on monitoring specific events for potential thr
 | 5136 | Directory service object modified | Monitors modifications to Active Directory objects. Can be useful for detecting GPO changes, admin account modifications, and specific user attribute changes. | `index=<your_windows
 
 
-### EventID 4768
+### EventID 4768 - Kerberos authentication ticket (TGT) requested
 
+This event is captured when a user logs into his workstation using his domain username and password, the workstation then contacts the local domain controller to request a TGT. This TGT is granted once the domain controller confirms that the username and password is correct.
 
+This Splunk search query can be used.
 
+**index="domaincontroller" sourcetype="WinEventLog:Security" EventCode=4768 | bin _time span=1m | table _time, Account_Name, Client_Address**
 
 <p align="center">
-<img src="https://imgur.com/tIXRi0H.png" height="100%" width="80%" alt="Fortinet Support page"/> 
+<img src="https://imgur.com/bcKobfu.png" height="100%" width="80%" alt="Fortinet Support page"/> 
 <br />
 
 
