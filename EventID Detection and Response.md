@@ -24,14 +24,26 @@ Active Directory security relies on monitoring specific events for potential thr
 | 4735/639 | Security-enabled local group changes | Tracks modifications to security-enabled local groups, including membership changes for administrative or sensitive groups. | `index=<domaincontroller> sourcetype=WinEventLog (EventCode=4735 OR EventCode=639)` |
 | 4737/641 | Security-enabled global group changes | Monitors changes to security-enabled global groups, including membership changes for administrative or sensitive groups. | `index=<domaincontroller> sourcetype=WinEventLog (EventCode=4737 OR EventCode=641)` |
 | 4755/659 | Security-enabled universal group changes | Tracks modifications to security-enabled universal groups, including membership changes for administrative or sensitive groups. | `index=<domaincontroller> sourcetype=WinEventLog (EventCode=4755 OR EventCode=659)` |
-| 5136 | Directory service object modified | Monitors modifications to Active Directory objects. Can be useful for detecting GPO changes, admin account modifications, and specific user attribute changes. | `index=<your_windows
+| 5136 | Directory service object modified | Monitors modifications to Active Directory objects. Can be useful for detecting GPO changes, admin account modifications, and specific user attribute changes. | `index=<domaincontroller> sourcetype=WinEventLog EventCode=5136` |
 
 
 ### EventID 4768 - Kerberos authentication ticket (TGT) requested
 
-This event is captured when a user logs into his workstation using his domain username and password, the workstation then contacts the local domain controller to request a TGT. This TGT is granted once the domain controller confirms that the username and password is correct.
+This event is captured when a user logs into his workstation using his domain username and password, the workstation then contacts the local domain controller to request a TGT. If the credentials are valid, the DC issues a TGT to the user's machine. Event ID 4768 gets logged on the DC, indicating this TGT request.
 
-This Splunk search query can be used.
+#### Security Significance
+
+A large number of these events in a short timeframe, particularly for unusual workstations, could indicate:
+Brute-Force Attacks: Hackers might be attempting to crack passwords through repeated login attempts.
+Spoofed Login Attempts: Attackers might be trying to impersonate legitimate users by logging in from unauthorized devices
+
+#### Monitoring and Analysis:
+
+Correlate with Login Failures: Investigate if the TGT request coincides with failed login attempts (Event ID 4625/4771). This could indicate brute-force attacks.
+Identify Workstation: Analyze the workstation name associated with the event. Unexpected or unknown workstations warrant further investigation.
+Monitor for Spikes: A sudden surge in TGT requests, especially from unrecognized workstations, could be a sign of malicious activity.
+
+This Splunk search query can be used. 
 
 **index="domaincontroller" sourcetype="WinEventLog:Security" EventCode=4768 | bin _time span=1m | table _time, Account_Name, Client_Address**
 
@@ -39,7 +51,8 @@ This Splunk search query can be used.
 <img src="https://imgur.com/bcKobfu.png" height="100%" width="80%" alt="Fortinet Support page"/> 
 <br />
 
+### EventID 4769 - User requests a Kerberos service ticket
 
+This lets you monitor the granting of service tickets. Service tickets are obtained whenever a user or computer accesses a server on the network.
 
-[Next: EventID detection on Splunk](https://github.com/custyblak/Active-Directory-Detection-and-Security/blob/main/EventID%20Detection%20on%20Splunk.md)
 
