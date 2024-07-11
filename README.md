@@ -1,9 +1,9 @@
 <h1> Active Directory Detection & Security </h1>
 
 <h2>Description</h2>
-The aim of this project is to showcase how a newly deployed Active Directory can be configured using secure group policies and managing user accounts with a focus on least privilege principles. Also, detecting suspicious activity within the environment using Splunk SIEM to analyse logs.</b>
+This project aims to demonstrate the secure configuration of a newly deployed Active Directory environment using firewall restriction, group policies and detection using Splunk SIEM to analyse logs.</b>
 
-To achieve this, we will design a simple lab, build and then perform internal pentesting against the domain controller. 
+<br>To achieve this, we will design a simple lab, build, create users, group policies and effect monitoring using Splunk SIEM. 
 
 <h2>Network Diagram</h2></b>
 
